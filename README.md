@@ -3,7 +3,7 @@ GASを使用して、Kaggleの新着コンペ情報をSlackに通知するBotで
 kaggleAPIでコンペ情報を定期的に取得し、スプレッドシートに書き込みます。
 スプレッドシートにないコンペ情報があれば、Slackに通知します。
 
-こちら（https://github.com/koukyo1994/Kaggle-Watcher）のリポジトリを参考に作成しました。
+こちら（[koukyo1994/Kaggle-Watcher](https://github.com/koukyo1994/Kaggle-Watcher)）のリポジトリを参考に作成しました。
 
 ## 使い方
 1. Google Driveの任意の場所にスプレッドシートを新規作成する
@@ -18,7 +18,7 @@ kaggleAPIでコンペ情報を定期的に取得し、スプレッドシート�
 1. ライブラリに「SlackApp」を追加する
     - スクリプトIDは`1on93YOYfSmV92R5q59NpKmsyWIQD8qnoLYk-gkQBI92C58SPyA2x1-bq`
 1. Slackのアプリを作成する
-    - こちら（→https://blog.da-vinci-studio.com/entry/2022/09/13/101530）の記事を参考にSlackアプリを作成
+    - こちら（→[Slackに定期投稿してくれるBotをGASとSlack APIで作成してみた](https://blog.da-vinci-studio.com/entry/2022/09/13/101530)）の記事を参考にSlackアプリを作成
     - アプリの設定画面＞「Features」＞「OAuth & Permissions」＞「Bot User OAuth Token」を控えておく
 1. kaggleAPIのBasic認証のためのヘッダーを生成
     - 以下をkaggleの`username`と`key`で置き換えてPythonで実行
