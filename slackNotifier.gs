@@ -3,8 +3,5 @@ function postMessage(message, channelId) {
   var slackApp = SlackApp.create(prop.token);
   var response = slackApp.postMessage(
     channelId, 
-    message, 
-    {
-      "username": "Kaggle Manager"
-    })
+    message)
 }
