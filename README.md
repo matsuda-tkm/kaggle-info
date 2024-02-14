@@ -28,6 +28,9 @@ Google Apps Script（GAS）を使用してKaggleの新着コンペ情報をSlack
 1. **Slackアプリの作成**  
    Slackアプリを作成します。詳細な手順については、[こちらの記事](https://blog.da-vinci-studio.com/entry/2022/09/13/101530)を参考にしてください。アプリの設定画面から「Features」→「OAuth & Permissions」に進み、「Bot User OAuth Token」を控えておきます。
 
+2. **チャンネルにアプリを追加**
+   通知したいチャンネルにSlackアプリを追加します。
+
 ### Kaggle API認証情報の設定
 
 1. **kaggleAPIの認証情報生成**  
