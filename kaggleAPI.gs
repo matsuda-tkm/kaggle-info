@@ -18,6 +18,7 @@ function getCompetitionList() {
   
   var response = UrlFetchApp.fetch(url, options);
   var result = JSON.parse(response.getContentText());
+  for (var r of result) {console.log(r)};
   return result;
 }
 
