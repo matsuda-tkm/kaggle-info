@@ -25,9 +25,9 @@ function main() {
   // new_compの情報をSlackに通知
   id=0; url=1; title=2 ; desc=3; category=4; reward=5; tags=6; deadline=7; maxTeamSize=8; awardsPoints=9; isKernelsSubmissionsOnly=10;
   if (new_comp.length > 0) {
-    message = "📢 新着Kaggleコンペ情報";
     for (var comp of new_comp) {
-      message += "\n\n---\n*" + comp[title] + "*\n";
+      message = "📢 新着Kaggleコンペ情報";
+      message += "\n\n*" + comp[title] + "*\n";
       message += "•   *説明* ：" + comp[desc] + "\n";
       message += "•   *タグ* ：";
       for (var tag of comp[tags]){
@@ -42,7 +42,7 @@ function main() {
       message += "•   *賞金総額* ：" + comp[reward] + "\n";
       message += "•   *提出締切* ：" + comp[deadline] + "\n";
       message += "•   *URL* ：" + comp[url];
+      postMessage(message, "#kaggle-info");
     }
-    postMessage(message, "#kaggle-info");
   }
 }
