@@ -2,6 +2,9 @@
 
 Google Apps Script（GAS）を使用してKaggleの新着コンペ情報をSlackに通知するBotです。このBotはkaggleAPIを利用して定期的にコンペ情報を取得し、スプレッドシートに書き込みます。スプレッドシートにない新しいコンペ情報がある場合、その情報をSlackに通知します。
 
+[2024/05/18追記]  
+スクレイピングしたコンペページ（Overview, Data, Rules）をGeminiに処理させて、コンペ情報を日本語でスレッド返信として投稿する機能を追加しました。  
+
 参考にしたリポジトリはこちらです：[koukyo1994/Kaggle-Watcher](https://github.com/koukyo1994/Kaggle-Watcher)。
 
 ### 準備
@@ -22,6 +25,10 @@ Google Apps Script（GAS）を使用してKaggleの新着コンペ情報をSlack
    ```
    1on93YOYfSmV92R5q59NpKmsyWIQD8qnoLYk-gkQBI92C58SPyA2x1-bq
    ```
+   また、「Cherrio」ライブラリを追加します。スクリプトIDは以下の通りです。
+   ```
+   1ReeQ6WO8kKNxoaA_O0XEQ589cIrRvEBA9qcWpNqdOP17i47u6N9M5Xh0
+   ```
 
 ### Slackアプリの設定
 
@@ -40,13 +47,24 @@ Google Apps Script（GAS）を使用してKaggleの新着コンペ情報をSlack
    urllib3.util.make_headers(basic_auth="【username】:【key】").get("authorization")
    ```
 
+### PhantomJSCloud API認証情報の設定
+
+※ PhantomJSCloudはコンペ情報のスクレイピングを行う際に使用
+
+1. **PhantomJSCloudにユーザー登録**  
+   [https://phantomjscloud.com/](https://phantomjscloud.com/)へアクセスし、ユーザー登録を行います。
+
+2. **APIキーをコピー**  
+   ユーザー登録後、ダッシュボードに表示される「ApiKey」をコピーしておきます。
+
 ### GASプロジェクトの設定
 
 1. **スクリプトプロパティの設定**  
    GASプロジェクトの左メニューから「プロジェクトの設定」→「スクリプトプロパティ」に進み、以下のプロパティを設定します。
    - `COMPETITION_LIST_SHEET_ID`: **スプレッドシートの作成**で作成したスプレッドシートのID。
    - `BASIC_AUTH_ENCODED`: **kaggleAPIの認証情報生成**で生成したエンコードされた文字列（先頭の`Base `は不要）。
-   - `token`: **Slackアプリの作成**で控えたSlackアプリのBot User OAuth Token。
+   - `BOT_USER_OAUTH_TOKEN`: **Slackアプリの作成**で控えたSlackアプリのBot User OAuth Token。
+   - `PHANTOMJSCLOUD_API_KEY`: **PhantomJSCloud API認証情報の設定**でコピーしたAPIキー。
 
 ### トリガーの設定
 
